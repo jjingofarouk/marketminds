@@ -84,7 +84,7 @@ export const searchSymbols = async (keywords: string): Promise<SearchResult[]> =
 
 export const getWatchlist = async (): Promise<Stock[]> => {
   return [
-    { symbol: 'AAPL', price: 150, volume: 1000000, timestamp: '2025-05-07' },
-    { symbol: 'GOOGL', price: 2800, volume: 500000, timestamp: '2025-05-07' },
+    { symbol: 'AAPL', price: 150, volume: 1000000, timestamp: '2025-05-07', change: 1.5 },
+    { symbol: 'GOOGL', price: 2800, volume: 500000, timestamp: '2025-05-07', change: -0.8 },
   ]
 }
