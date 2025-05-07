@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app'
 import 'tailwindcss/tailwind.css'
-import Header from 'components/Header'
+import Header from '../components/Header'
 import { useEffect } from 'react'
-import { useThemeStore } from 'store/useThemeStore'
+import { useThemeStore } from '../store/useThemeStore'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isDark } = useThemeStore()
