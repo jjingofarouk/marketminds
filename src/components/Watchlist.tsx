@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import { useStockStore } from 'store/useStockStore'
+import { useStockStore } from '../store/useStockStore'
 import StockCard from './StockCard'
 
 const Watchlist: FC = () => {
