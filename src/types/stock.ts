@@ -3,6 +3,7 @@ export interface Stock {
   price: number
   volume: number
   timestamp: string
+  change: number // Percentage change
 }
 
 export interface HistoricalData {
