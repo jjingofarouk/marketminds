@@ -4,6 +4,7 @@ import {
   BalanceSheet, CashFlow, Earnings, ExchangeRate, CryptoData, CommodityData,
   EconomicIndicator, TechnicalIndicator, SearchResult
 } from '../types/stock'
+import { User } from '../types/user'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
 
@@ -87,4 +88,25 @@ export const getWatchlist = async (): Promise<Stock[]> => {
     { symbol: 'AAPL', price: 150, volume: 1000000, timestamp: '2025-05-07', change: 1.5 },
     { symbol: 'GOOGL', price: 2800, volume: 500000, timestamp: '2025-05-07', change: -0.8 },
   ]
+}
+
+export const login = async (email: string, password: string): Promise<{ token: string; user: User }> => {
+  // Mock implementation until server provides /api/auth/login
+  return {
+    token: 'mock-jwt-token',
+    user: { id: '1', email, name: 'Mock User' }
+  }
+}
+
+export const register = async (email: string, password: string): Promise<{ token: string; user: User }> => {
+  // Mock implementation until server provides /api/auth/register
+  return {
+    token: 'mock-jwt-token',
+    user: { id: '2', email, name: 'Mock User' }
+  }
+}
+
+export const updateProfile = async (data: { email: string }): Promise<User> => {
+  // Mock implementation until server provides /api/auth/profile
+  return { id: '1', email: data.email, name: 'Mock User' }
 }
