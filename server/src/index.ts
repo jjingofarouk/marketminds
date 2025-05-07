@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 import stockRoutes from './routes/stock'
 import optionsRoutes from './routes/options'
@@ -25,7 +25,8 @@ app.use('/api/economic', economicRoutes)
 app.use('/api/technical', technicalRoutes)
 app.use('/api/search', searchRoutes)
 
-app.get('/health', (req, res) => res.status(200).json({ status: 'OK' }))
+app.get('/health', (req: Request, res: Response) => {
+  res.status(200).json({ status: 'OK' })
+})
 
-// Export for Vercel serverless
 export default app
