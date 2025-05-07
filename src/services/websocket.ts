@@ -1,4 +1,4 @@
-import { Stock } from 'types/stock'
+import { Stock } from '../types/stock'
 
 export const createWebSocket = (onMessage: (data: Stock) => void) => {
   const ws = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}/ws/stocks`)
