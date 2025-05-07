@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import Button from './common/Button'
-import { useAuthStore } from 'store/useAuthStore'
-import { useThemeStore } from 'store/useThemeStore'
+import { useAuthStore } from '../store/useAuthStore'
+import { useThemeStore } from '../store/useThemeStore'
 
 const Header: FC = () => {
   const { user, logout } = useAuthStore()
