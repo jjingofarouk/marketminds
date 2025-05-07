@@ -1,7 +1,7 @@
 import { FC, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useAuthStore } from 'store/useAuthStore'
-import Button from 'components/common/Button'
+import { useAuthStore } from '../store/useAuthStore'
+import Button from '../components/common/Button'
 
 const Login: FC = () => {
   const [email, setEmail] = useState('')
