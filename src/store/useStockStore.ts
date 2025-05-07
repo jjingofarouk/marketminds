@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import { Stock, HistoricalData } from 'types/stock'
-import { Prediction } from 'types/prediction'
-import { getStock, getHistoricalData, getPrediction, getWatchlist } from 'services/api'
-import { createWebSocket } from 'services/websocket'
+import { Stock, HistoricalData } from '../types/stock'
+import { Prediction } from '../types/prediction'
+import { getStock, getHistoricalData, getPrediction, getWatchlist } from '../services/api'
+import { createWebSocket } from '../services/websocket'
 
 interface StockState {
   stocks: Stock[]
