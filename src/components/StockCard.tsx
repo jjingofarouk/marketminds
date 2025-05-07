@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Stock } from 'types/stock'
+import { Stock } from '../types/stock'
 
 interface StockCardProps {
   stock: Stock
