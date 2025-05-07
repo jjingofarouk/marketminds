@@ -1,13 +1,13 @@
 import { create } from 'zustand'
-import { Stock, HistoricalData } from '../types/stock'
-import { Prediction } from '../types/prediction'
-import { getStock, getHistoricalData, getPrediction, getWatchlist } from '../services/api'
-import { createWebSocket } from '../services/websocket'
+import { Stock, HistoricalData } from 'types/stock'
+import { Prediction } from 'types/prediction'
+import { getStock, getHistoricalData, getPrediction, getWatchlist } from 'services/api'
+import { createWebSocket } from 'services/websocket'
 
 interface StockState {
   stocks: Stock[]
   watchlist: Stock[]
-  fetchStocks: () => Promise<void>
+  fetchStocks: (symbol: string) => Promise<void>
   fetchWatchlist: () => Promise<void>
   fetchHistoricalData: (symbol: string) => Promise<HistoricalData[]>
   fetchPrediction: (symbol: string) => Promise<Prediction | null>
@@ -16,28 +16,26 @@ interface StockState {
 export const useStockStore = create<StockState>((set) => ({
   stocks: [],
   watchlist: [],
-
-  fetchStocks: async () => {
+  fetchStocks: async (symbol: string) => {
     try {
-      const stocks = await getStock()
-      set({ stocks })
+      const stock = await getStock(symbol)
+      set((state) => ({
+        stocks: state.stocks.some((s) => s.symbol === stock.symbol)
+          ? state.stocks.map((s) => (s.symbol === stock.symbol ? stock : s))
+          : [...state.stocks, stock],
+      }))
 
-      const ws = createWebSocket()
-      ws.onmessage = (event) => {
-        const updatedStock = JSON.parse(event.data)
+      const ws = createWebSocket((data) => {
         set((state) => ({
-          stocks: state.stocks.map((s) =>
-            s.symbol === updatedStock.symbol ? updatedStock : s
-          )
+          stocks: state.stocks.some((s) => s.symbol === data.symbol)
+            ? state.stocks.map((s) => (s.symbol === data.symbol ? data : s))
+            : [...state.stocks, data],
         }))
-      }
-
-      // Cleanup can be handled in the component that calls fetchStocks
+      })
     } catch (error) {
       console.error('Error fetching stocks:', error)
     }
   },
-
   fetchWatchlist: async () => {
     try {
       const watchlist = await getWatchlist()
@@ -46,7 +44,6 @@ export const useStockStore = create<StockState>((set) => ({
       console.error('Error fetching watchlist:', error)
     }
   },
-
   fetchHistoricalData: async (symbol: string) => {
     try {
       return await getHistoricalData(symbol)
@@ -55,7 +52,6 @@ export const useStockStore = create<StockState>((set) => ({
       return []
     }
   },
-
   fetchPrediction: async (symbol: string) => {
     try {
       return await getPrediction(symbol)
@@ -63,5 +59,5 @@ export const useStockStore = create<StockState>((set) => ({
       console.error('Error fetching prediction:', error)
       return null
     }
-  }
+  },
 }))
