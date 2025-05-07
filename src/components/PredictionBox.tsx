@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Prediction } from 'types/prediction'
+import { Prediction } from '../types/prediction'
 
 interface PredictionBoxProps {
   prediction: Prediction
