@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from 'react'
-import Watchlist from 'components/Watchlist'
-import Chart from 'components/Chart'
-import { useStockStore } from 'store/useStockStore'
-import { HistoricalData, Stock, IntradayData, Option, CompanyOverview, IncomeStatement, BalanceSheet, CashFlow, Earnings, ExchangeRate, CryptoData, CommodityData, EconomicIndicator, TechnicalIndicator, SearchResult } from 'types/stock'
+import Watchlist from '../components/Watchlist'
+import Chart from '../components/Chart'
+import { useStockStore } from '../store/useStockStore'
+import { HistoricalData, Stock, IntradayData, Option, CompanyOverview, IncomeStatement, BalanceSheet, CashFlow, Earnings, ExchangeRate, CryptoData, CommodityData, EconomicIndicator, TechnicalIndicator, SearchResult } from '../types/stock'
 
 const Dashboard: FC = () => {
   const {
