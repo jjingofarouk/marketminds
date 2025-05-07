@@ -9,6 +9,7 @@ export interface Stock {
   price: number
   volume: number
   timestamp: string
+  change: number
 }
 
 export interface HistoricalData {
@@ -124,6 +125,7 @@ export const fetchStockQuote = async (symbol: string): Promise<Stock> => {
     price: parseFloat(data['05. price']),
     volume: parseInt(data['06. volume']),
     timestamp: data['07. latest trading day'],
+    change: parseFloat(data['10. change percent'].replace('%', '')),
   }
 }
 
