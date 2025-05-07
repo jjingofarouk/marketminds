@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
-import { useAuthStore } from 'store/useAuthStore'
-import Button from 'components/common/Button'
+import { useAuthStore } from '../store/useAuthStore'
+import Button from '../components/common/Button'
 
 const Profile: FC = () => {
   const { user, updateProfile } = useAuthStore()
