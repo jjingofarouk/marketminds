@@ -1,10 +1,10 @@
 import { FC, useState, useEffect } from 'react'
-import Watchlist from '../components/Watchlist'
-import Chart from '../components/Chart'
-import PredictionBox from '../components/PredictionBox'
-import { useStockStore } from '../store/useStockStore'
-import { HistoricalData, Stock } from '../types/stock'
-import { Prediction } from '../types/prediction'
+import Watchlist from 'components/Watchlist'
+import Chart from 'components/Chart'
+import PredictionBox from 'components/PredictionBox'
+import { useStockStore } from 'store/useStockStore'
+import { HistoricalData, Stock } from 'types/stock'
+import { Prediction } from 'types/prediction'
 
 const Dashboard: FC = () => {
   const { stocks, fetchStocks, fetchHistoricalData, fetchPrediction } = useStockStore()
@@ -13,14 +13,18 @@ const Dashboard: FC = () => {
   const [symbol, setSymbol] = useState('')
 
   useEffect(() => {
-    fetchStocks()
+    fetchStocks('AAPL')
   }, [fetchStocks])
 
   const handleSearch = async () => {
-    const data = await fetchHistoricalData(symbol)
-    const pred = await fetchPrediction(symbol)
-    setHistoricalData(data)
-    setPrediction(pred)
+    try {
+      const data = await fetchHistoricalData(symbol)
+      const pred = await fetchPrediction(symbol)
+      setHistoricalData(data)
+      setPrediction(pred)
+    } catch (error) {
+      console.error('Error searching stock:', error)
+    }
   }
 
   return (
