@@ -1,10 +1,10 @@
 import { FC, useState, useEffect } from 'react'
-import Watchlist from 'components/Watchlist'
-import Chart from 'components/Chart'
-import PredictionBox from 'components/PredictionBox'
-import { useStockStore } from 'store/useStockStore'
-import { HistoricalData, Stock } from 'types/stock'
-import { Prediction } from 'types/prediction'
+import Watchlist from '../components/Watchlist'
+import Chart from '../components/Chart'
+import PredictionBox from '../components/PredictionBox'
+import { useStockStore } from '../store/useStockStore'
+import { HistoricalData, Stock } from '../types/stock'
+import { Prediction } from '../types/prediction'
 
 const Dashboard: FC = () => {
   const { stocks, fetchStocks, fetchHistoricalData, fetchPrediction } = useStockStore()
