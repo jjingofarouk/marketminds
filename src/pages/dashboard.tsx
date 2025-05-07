@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import Watchlist from '../components/Watchlist'
-import Chart from 'components/Chart'
+import Chart from '../components/Chart'
 import PredictionBox from '../components/PredictionBox'
 import { useStockStore } from '../store/useStockStore'
 import { HistoricalData, Stock } from '../types/stock'
