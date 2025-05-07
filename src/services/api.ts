@@ -3,7 +3,7 @@ import {
   Stock, HistoricalData, IntradayData, Option, CompanyOverview, IncomeStatement,
   BalanceSheet, CashFlow, Earnings, ExchangeRate, CryptoData, CommodityData,
   EconomicIndicator, TechnicalIndicator, SearchResult
-} from 'types/stock'
+} from '../types/stock'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
 
