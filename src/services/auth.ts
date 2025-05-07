@@ -1,4 +1,4 @@
-import { User } from 'types/user'
+import { User } from '../types/user'
 import { login as apiLogin, register as apiRegister, updateProfile as apiUpdateProfile } from './api'
 
 export const login = async (email: string, password: string): Promise<User> => {
