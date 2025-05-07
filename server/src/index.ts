@@ -11,7 +11,6 @@ import technicalRoutes from './routes/technical'
 import searchRoutes from './routes/search'
 
 const app = express()
-const port = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
@@ -26,6 +25,7 @@ app.use('/api/economic', economicRoutes)
 app.use('/api/technical', technicalRoutes)
 app.use('/api/search', searchRoutes)
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
-})
+app.get('/health', (req, res) => res.status(200).json({ status: 'OK' }))
+
+// Export for Vercel serverless
+export default app
