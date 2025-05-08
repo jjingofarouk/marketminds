@@ -38,7 +38,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
           color: '#e5e7eb',
           font: {
             size: 14,
-            weight: '600',
+            weight: 600 as const, // Changed to numeric value
           },
         },
       },
@@ -48,7 +48,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
         color: '#e5e7eb',
         font: {
           size: 18,
-          weight: '700',
+          weight: 700 as const, // Changed to numeric value
         },
         padding: {
           bottom: 20,
@@ -56,7 +56,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
       },
       tooltip: {
         backgroundColor: 'rgba(17, 24, 39, 0.9)',
-        titleFont: { size: 14, weight: '600' },
+        titleFont: { size: 14, weight: 600 as const }, // Changed to numeric value
         bodyFont: { size: 12 },
         padding: 12,
         cornerRadius: 8,
