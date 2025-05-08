@@ -94,7 +94,7 @@ export const login = async (email: string, password: string): Promise<{ token: s
   // Mock implementation until server provides /api/auth/login
   return {
     token: 'mock-jwt-token',
-    user: { id: '1', email, name: 'Mock User' }
+    user: { id: 1, email, name: 'Mock User' }
   }
 }
 
@@ -102,11 +102,11 @@ export const register = async (email: string, password: string): Promise<{ token
   // Mock implementation until server provides /api/auth/register
   return {
     token: 'mock-jwt-token',
-    user: { id: '2', email, name: 'Mock User' }
+    user: { id: 2, email, name: 'Mock User' }
   }
 }
 
 export const updateProfile = async (data: { email: string }): Promise<User> => {
   // Mock implementation until server provides /api/auth/profile
-  return { id: '1', email: data.email, name: 'Mock User' }
+  return { id: 1, email: data.email, name: 'Mock User' }
 }
