@@ -1,4 +1,3 @@
-
 import { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, Sun, Moon, LogOut, User, Briefcase, Bookmark, TrendingUp, Bell, Search, ChevronDown, Settings } from 'lucide-react'
@@ -13,16 +12,16 @@ const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
@@ -88,7 +87,7 @@ const Header: FC = () => {
                 >
                   Portfolio
                 </Link>
-                
+
                 {/* Notifications */}
                 <div className="relative">
                   <Button
@@ -100,7 +99,7 @@ const Header: FC = () => {
                     <Bell className="w-5 h-5 text-gray-300 hover:text-white" />
                     <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full"></span>
                   </Button>
-                  
+
                   {showNotifications && (
                     <div className="absolute right-0 mt-2 w-64 bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-700">
                       <div className="px-4 py-2 border-b border-gray-700">
@@ -121,7 +120,7 @@ const Header: FC = () => {
                     </div>
                   )}
                 </div>
-                
+
                 {/* Theme Toggle */}
                 <Button
                   onClick={toggleTheme}
@@ -131,7 +130,7 @@ const Header: FC = () => {
                 >
                   {isDark ? <Sun className="w-5 h-5 text-gray-300 hover:text-white" /> : <Moon className="w-5 h-5 text-gray-300 hover:text-white" />}
                 </Button>
-                
+
                 {/* Profile Menu */}
                 <div className="relative">
                   <Button
@@ -144,7 +143,7 @@ const Header: FC = () => {
                     </div>
                     <ChevronDown className="w-4 h-4 text-gray-300" />
                   </Button>
-                  
+
                   {showProfileMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-700">
                       <Link
@@ -184,6 +183,7 @@ const Header: FC = () => {
                 <Button
                   as={Link}
                   href="/register"
+                  variant="primary"
                   className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-4 py-2 rounded-md font-medium shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Start Free Trial
@@ -301,6 +301,7 @@ const Header: FC = () => {
               <Button
                 as={Link}
                 href="/register"
+                variant="primary"
                 className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-4 py-2 rounded-md font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex justify-center"
                 onClick={toggleMobileMenu}
               >
