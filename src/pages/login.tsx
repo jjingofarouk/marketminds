@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAuthStore } from '../store/useAuthStore'
 import Button from '../components/common/Button'
-import { Eye, EyeOff, Google, Microsoft } from 'lucide-react'
+import { Eye, EyeOff, Microsoft } from 'lucide-react'
 
 const Login: FC = () => {
   const [email, setEmail] = useState('')
@@ -112,7 +112,7 @@ const Login: FC = () => {
               className="flex items-center space-x-2"
               onClick={() => alert('Google SSO not implemented')}
             >
-              <Google className="w-5 h-5" />
+              <Eye className="w-5 h-5" />
               <span>Google</span>
             </Button>
             <Button
