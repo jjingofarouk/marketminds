@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Line } from 'react-chartjs-2'
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Tick } from 'chart.js'
 import { HistoricalData } from '../types/stock'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
@@ -38,7 +38,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
           color: '#e5e7eb',
           font: {
             size: 14,
-            weight: 600 as const, // Changed to numeric value
+            weight: 600 as const,
           },
         },
       },
@@ -48,7 +48,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
         color: '#e5e7eb',
         font: {
           size: 18,
-          weight: 700 as const, // Changed to numeric value
+          weight: 700 as const,
         },
         padding: {
           bottom: 20,
@@ -56,7 +56,7 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
       },
       tooltip: {
         backgroundColor: 'rgba(17, 24, 39, 0.9)',
-        titleFont: { size: 14, weight: 600 as const }, // Changed to numeric value
+        titleFont: { size: 14, weight: 600 as const },
         bodyFont: { size: 12 },
         padding: 12,
         cornerRadius: 8,
@@ -81,7 +81,10 @@ const Chart: FC<ChartProps> = ({ data, title = 'Stock Price History' }) => {
         },
         ticks: {
           color: '#9ca3af',
-          callback: (value: number) => `$${value.toFixed(2)}`,
+          callback: (tickValue: string | number, _index: number, _ticks: Tick[]): string => {
+            const value = typeof tickValue === 'string' ? parseFloat(tickValue) : tickValue;
+            return `$${value.toFixed(2)}`;
+          },
         },
       },
     },
