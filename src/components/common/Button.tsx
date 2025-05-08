@@ -1,22 +1,36 @@
-import { FC, ButtonHTMLAttributes, AnchorHTMLAttributes, forwardRef } from 'react'
-import { LinkProps } from 'next/link'
+import { FC, forwardRef, HTMLAttributes } from 'react'
+import Link from 'next/link'
 
-// Combine button, anchor, and Link props
-type ElementProps = ButtonHTMLAttributes<HTMLButtonElement> | AnchorHTMLAttributes<HTMLAnchorElement> | LinkProps
-
-interface ButtonProps extends ElementProps {
+// Define a type that includes common HTML attributes and Link-specific props
+interface ButtonProps extends HTMLAttributes<HTMLElement> {
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'ghost'
   size?: 'sm' | 'md' | 'lg' | 'icon'
   className?: string
   as?: React.ElementType // Allow rendering as any component (e.g., Link, button, a)
   children?: React.ReactNode // Explicitly include children
   onClick?: (event: React.MouseEvent<HTMLElement>) => void // Explicitly include onClick
-  href?: string // Explicitly include href for Link components
+  href?: string // Explicitly include href for Link or anchor
+  disabled?: boolean // Include disabled for button
+  type?: 'button' | 'submit' | 'reset' // Include type for button
 }
 
 // Use forwardRef to handle refs correctly for polymorphic components
 const Button: FC<ButtonProps> = forwardRef<HTMLElement, ButtonProps>(
-  ({ children, variant = 'primary', size = 'md', className = '', as: Component = 'button', onClick, href, ...props }, ref) => {
+  (
+    {
+      children,
+      variant = 'primary',
+      size = 'md',
+      className = '',
+      as: Component = 'button',
+      onClick,
+      href,
+      disabled,
+      type,
+      ...props
+    },
+    ref
+  ) => {
     const baseStyles = 'font-semibold rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md'
 
     const variantStyles = {
@@ -34,6 +48,9 @@ const Button: FC<ButtonProps> = forwardRef<HTMLElement, ButtonProps>(
       icon: 'p-2 w-10 h-10 flex items-center justify-center',
     }
 
+    // Ensure Link components don't receive button-specific props like type or disabled
+    const componentProps = Component === Link ? { href, ...props } : { onClick, href, disabled, type, ...props }
+
     return (
       <Component
         ref={ref}
@@ -44,10 +61,9 @@ const Button: FC<ButtonProps> = forwardRef<HTMLElement, ButtonProps>(
           ${className}
           relative overflow-hidden
           group
+          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         `}
-        onClick={onClick}
-        href={href}
-        {...props}
+        {...componentProps}
       >
         {/* Animated background effect */}
         <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
