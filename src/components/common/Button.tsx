@@ -10,11 +10,12 @@ interface ButtonProps extends ElementProps {
   className?: string
   as?: React.ElementType // Allow rendering as any component (e.g., Link, button, a)
   children?: React.ReactNode // Explicitly include children
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void // Explicitly include onClick
 }
 
 // Use forwardRef to handle refs correctly for polymorphic components
 const Button: FC<ButtonProps> = forwardRef<HTMLElement, ButtonProps>(
-  ({ children, variant = 'primary', size = 'md', className = '', as: Component = 'button', ...props }, ref) => {
+  ({ children, variant = 'primary', size = 'md', className = '', as: Component = 'button', onClick, ...props }, ref) => {
     const baseStyles = 'font-semibold rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md'
 
     const variantStyles = {
@@ -43,6 +44,7 @@ const Button: FC<ButtonProps> = forwardRef<HTMLElement, ButtonProps>(
           relative overflow-hidden
           group
         `}
+        onClick={onClick}
         {...props}
       >
         {/* Animated background effect */}
