@@ -7,7 +7,7 @@ const Home: FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-6">
-          MarketMind Enterprise
+          MarketMind 
         </h1>
         <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
           Empower your financial strategy with real-time market intelligence, advanced analytics, and AI-driven predictive insights tailored for enterprise success.
