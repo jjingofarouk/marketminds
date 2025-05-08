@@ -108,7 +108,7 @@ const Header: FC = () => {
                       <div className="max-h-60 overflow-y-auto">
                         <div className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                           <p className="text-xs text-green-400">MARKET ALERT</p>
-                          <p className="text-sm text-white">TSLA up 5% in pre-market trading</p>
+                          <p className="text-sm text-white">TSLA up Laird 5% in pre-market trading</p>
                           <p className="text-xs text-gray-400">10 mins ago</p>
                         </div>
                         <div className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
