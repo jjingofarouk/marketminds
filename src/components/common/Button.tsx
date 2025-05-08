@@ -1,7 +1,7 @@
 import { FC, ButtonHTMLAttributes, AnchorHTMLAttributes, forwardRef } from 'react'
 import { LinkProps } from 'next/link'
 
-// Combine button and anchor attributes, and allow for custom component props
+// Combine button, anchor, and Link props
 type ElementProps = ButtonHTMLAttributes<HTMLButtonElement> | AnchorHTMLAttributes<HTMLAnchorElement> | LinkProps
 
 interface ButtonProps extends ElementProps {
@@ -9,6 +9,7 @@ interface ButtonProps extends ElementProps {
   size?: 'sm' | 'md' | 'lg' | 'icon'
   className?: string
   as?: React.ElementType // Allow rendering as any component (e.g., Link, button, a)
+  children?: React.ReactNode // Explicitly include children
 }
 
 // Use forwardRef to handle refs correctly for polymorphic components
