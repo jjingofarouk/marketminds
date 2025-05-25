@@ -46,7 +46,7 @@ const Header: FC = () => {
             className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 to-purple-500 tracking-tight flex items-center"
           >
             <TrendingUp className="w-8 h-8 mr-2 text-green-400" />
-            <span>MarketMind</span>
+            <span>MarketMinds</span>
             <span className="text-green-400 font-light ml-1">Pro</span>
           </Link>
         </div>
